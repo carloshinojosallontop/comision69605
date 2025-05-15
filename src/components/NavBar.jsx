@@ -3,6 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidget from './CartWidget';
+import { NavLink } from "react-router-dom";
 
 function NavBar() {
   return (
@@ -11,17 +12,17 @@ function NavBar() {
         
         <div className="d-flex align-items-center flex-shrink-0">
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Brand href="#home" className="ms-2">GamingStore</Navbar.Brand>
+          <Navbar.Brand as={NavLink} to="/" className="ms-2">GamingStore</Navbar.Brand>
         </div>
         
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Inicio</Nav.Link>
-            <Nav.Link href="#link">Ofertas</Nav.Link>
+            <Nav.Link as={NavLink} to="/">Inicio</Nav.Link>
+            <Nav.Link as={NavLink} to="/category/ofertas">Ofertas</Nav.Link>
             <NavDropdown title="Productos" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Nintendo</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">PS5</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">XBOX</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink} to="/category/nintendo">Nintendo</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink} to="/category/ps5">PS5</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink} to="/category/ps4">PS4</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
