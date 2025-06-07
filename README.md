@@ -1,12 +1,56 @@
-# React + Vite
+# 🎮 Tienda de Videojuegos - E-commerce React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una tienda online de videojuegos desarrollada con **React** y **Vite**, que permite a los usuarios navegar por un catálogo de productos, añadirlos al carrito, y realizar un checkout básico. Utiliza Firebase como backend para el almacenamiento de productos y órdenes.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologías Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ⚛️ React
+- ⚡ Vite
+- 🔥 Firebase (Firestore)
+- 🛒 React Context API (manejo de carrito)
+- 🧪 React Hook Form (validación de formularios)
+- 📦 SweetAlert2 (alertas de confirmación)
+- 🔄 React Router DOM (navegación entre vistas)
+- 💅 Bootstrap (estilos)
 
-## Expanding the ESLint configuration
+## 🧰 Funcionalidades Principales
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Listado de productos por categoría
+- Vista detallada de cada videojuego
+- Agregar y eliminar productos del carrito
+- Visualización del total del carrito
+- Formulario de compra con validación
+- Almacenamiento de órdenes en Firebase
+- Alerta de confirmación de compra
+
+## 🔧 Instalación
+
+Clona el repositorio y ejecuta los siguientes comandos:
+
+```bash
+npm install
+npm run dev
+```
+
+> Asegúrate de configurar correctamente tu conexión a Firebase en `/src/service/firebase.js`.
+
+## 📁 Estructura del Proyecto
+
+```
+entrega-comision69605/
+├── components/           # Componentes reutilizables (Navbar, Item, ItemList, etc.)
+├── context/              # Contexto del carrito
+├── pages/                # Vistas principales (CartView, Checkout, etc.)
+├── service/              # Configuración de Firebase
+├── App.jsx               # Enrutamiento y layout principal
+├── main.jsx              # Punto de entrada
+```
+
+## 📝 Notas
+
+- Este proyecto fue realizado como parte de la **Comisión 69605 de Coderhouse**.
+- Puedes personalizar las categorías, productos y diseño a tu gusto.
+- Se recomienda usar Firebase Authentication y protección de rutas para un entorno de producción.
+
+
+Desarrollado por Carlos Hinojosa.
