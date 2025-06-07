@@ -1,4 +1,4 @@
-const data = [
+export const data = [
   {
     id: "01",
     name: "Mario Kart 8 | Juego para Nintendo Switch",

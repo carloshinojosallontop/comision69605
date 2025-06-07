@@ -1,33 +1,49 @@
 import { useEffect, useState } from "react";
-import { getProducts } from "../mock/asyncData";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
+import LoaderComponent from "./LoaderComponent";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../service/firebase";
 
 const ItemListContainer = ({ greeting }) => {
   const [products, setProducts] = useState([]);
-
+  const [loading, setLoading] = useState(false);
   const { categoryId } = useParams();
 
-  console.log(categoryId);
   useEffect(() => {
-    getProducts()
+    setLoading(true);
+
+    const productsCollection = categoryId
+      ? query(collection(db, "products"), where("category", "==", categoryId))
+      : collection(db, "products");
+
+    getDocs(productsCollection)
       .then((res) => {
-        if (categoryId) {
-          setProducts(res.filter((prod) => prod.category === categoryId));
-        } else {
-          setProducts(res);
-        }
+        const list = res.docs.map((doc) => {
+          return {
+            id: doc.id,
+            ...doc.data(),
+          };
+        });
+        setProducts(list);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error))
+      .finally(() => setLoading(false));
   }, [categoryId]);
 
   return (
-    <div className="container mt-5">
-      <h1>
-        {greeting} {categoryId && <span>{categoryId}</span>}
-      </h1>
-      <ItemList products={products} />
-    </div>
+    <>
+      {loading ? (
+        <LoaderComponent />
+      ) : (
+        <div>
+          <h1 className="text-success">
+            {greeting} {categoryId && <span>{categoryId}</span>}
+          </h1>
+          <ItemList products={products} />
+        </div>
+      )}
+    </>
   );
 };
 

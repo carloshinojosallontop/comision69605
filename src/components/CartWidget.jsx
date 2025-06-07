@@ -1,12 +1,17 @@
+import { useContext } from "react";
 import { BsCart4 } from "react-icons/bs";
+import { Badge } from "react-bootstrap";
+import { CartContext } from "../context/CartContext";
 
 const CartWidget = () => {
-    return (
-      <button className="btn btn-outline-danger" type="button">
-        <BsCart4 fontSize={"1.8rem"}/>
-        <span className="badge bg-dark ms-1">0</span>
-      </button>
-    );
-  };
-  
-  export default CartWidget;
+  const { cartQuantity } = useContext(CartContext);
+
+  return (
+    <div>
+      {cartQuantity() > 0 && <Badge bg="danger">{cartQuantity()}</Badge>}
+      <BsCart4 fontSize={"1.8rem"} />
+    </div>
+  );
+};
+
+export default CartWidget;
